@@ -1,0 +1,18 @@
+# Ignore Visual Studio specific files
+.vs/
+*.user
+*.suo
+*.vscode/
+Thumbs.db
+
+# Ignore build files
+bin/
+obj/
+**/bin/
+**/obj/
+
+#Auto-generated and debug files
+wwwroot/**/*.gz
+wwwroot/**/*.br 
+wwwroot/**/*.map
+wwwroot/**/*.pdb

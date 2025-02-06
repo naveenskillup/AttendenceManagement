@@ -1,0 +1,78 @@
+
+#sidebar{
+    width: 180px;
+    height: 100vh;
+    background-color: #043959;
+    padding: 15px 5px;
+    position: fixed;
+}
+
+#sidebar .nav-link{
+    margin:5px;
+}
+
+#sidebar .nav-icon{
+    padding-right: 0.5rem;
+}
+
+#sidebar .nav-icon i, #sidebar .nav-title{
+    color: #fff;
+    font-weight: 600;
+}
+
+#main-content {
+    margin-left:180px;
+    padding: 5px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.actions-col{
+    width: 100px;
+}
+
+.card .card-header{
+    font-weight: 600;
+    padding-left:10px;
+    font-size:18px;
+}
+
+label{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Dashboard styles */
+.dashboard .card i, .dashboard .card .card-subtitle{
+   font-weight: 600;
+   font-size: 1.5rem;
+   color:blueviolet
+}
+
+.dashboard .card .card-title, .dashboard .card i{
+    font-size: 2rem;
+    color:blueviolet;
+}
+
+.dashboard .profile{
+    width: 120px;
+    border-radius: 80px;
+}
+
+@media (max-width:576px) {
+    #sidebar{
+        width: 60px;
+        padding: 20px 0px;
+    }
+
+    #sidebar .nav-title{
+        display: none;
+    }
+
+    #main-content {
+        margin-left:60px;
+        padding: 10px;
+        height: 100vh;
+        overflow-y: auto;
+    }
+}
