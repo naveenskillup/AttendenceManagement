@@ -6,9 +6,6 @@ namespace AttendenceManagementApi.Controllers
 {
     public class CommonController : ControllerBase
     {
-        public CommonController(AMSDBContext context) 
-            => AMSDBContext = context;
-
-        protected readonly AMSDBContext AMSDBContext;
+        
     }
 }

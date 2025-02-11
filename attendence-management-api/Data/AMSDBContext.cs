@@ -5,12 +5,10 @@ namespace AttendenceManagementData
 {
     public class AMSDBContext : DbContext
     {
-        public DbSet<Teacher> Teachers { get; set; }
+        public AMSDBContext(DbContextOptions<AMSDBContext> options) : base(options)
+        { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(_connectionString);
-        }
+        public DbSet<Teacher> Teachers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,6 +18,5 @@ namespace AttendenceManagementData
             //    .HasDatabaseName("IX_Teacher_Id");
         }
 
-        private const string _connectionString = "Data Source=DESKTOP-170UE71\\SQLEXPRESS;Initial Catalog=AMSDB;Integrated Security=True;TrustServerCertificate=True;";
     }
 }

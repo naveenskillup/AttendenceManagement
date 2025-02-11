@@ -1,3 +1,5 @@
+using AttendenceManagementApi.Data.Interfaces;
+using AttendenceManagementApi.Data;
 using AttendenceManagementData;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Db context registration
 builder.Services.AddDbContext<AMSDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetSection("ConnectionString").GetConnectionString("AMSDB")));
+
+// Register the data provider
+builder.Services.AddScoped<ITeacherDataProvider, TeacherDataProvider>();
 
 // Add services to the container.
 
