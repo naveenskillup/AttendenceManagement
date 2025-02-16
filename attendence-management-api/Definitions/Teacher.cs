@@ -34,7 +34,7 @@ namespace AttendenceManagementData.Definitions
         public decimal Salary { get; set; }
 
         [Column(Order =100)]
-        public byte[] Profile { get; set; }
+        public byte[]? Profile { get; set; }
 
     }
 }

@@ -7,8 +7,8 @@ namespace AttendenceManagementApi.Data.Interfaces
         Teacher Get(int id);
         IEnumerable<Teacher> Get();
         void Save(Teacher teacher);
-        void Update(int id, Teacher teacher);
-        void Delete(int id);
-        IEnumerable<Teacher> Find(int? id, string firstName, string lastName);
+        bool TryUpdate(int id, Teacher teacher);
+        bool TryDelete(int id);
+        IEnumerable<Teacher> Find(int? id, string? firstName, string? lastName);
     }
 }

@@ -23,11 +23,11 @@ namespace AttendenceManagementApi.Data
             _context.SaveChanges();
         }
 
-        public void Update(int id, Teacher teacher)
+        public bool TryUpdate(int id, Teacher teacher)
         {
             var existingTeacher = _context.Teachers.FirstOrDefault(t => t.Id == id);
             if (existingTeacher == null)
-                return;
+                return false;
 
             existingTeacher.FirstName = teacher.FirstName;
             existingTeacher.LastName = teacher.LastName;
@@ -37,19 +37,21 @@ namespace AttendenceManagementApi.Data
             existingTeacher.Salary = teacher.Salary;
             existingTeacher.Profile = teacher.Profile;
             _context.SaveChanges();
+            return true;
         }
 
-        public void Delete(int id)
+        public bool TryDelete(int id)
         {
             var teacher = _context.Teachers.FirstOrDefault(t => t.Id == id);
             if (teacher == null)
-                return;
+                return false;
 
             _context.Teachers.Remove(teacher);
             _context.SaveChanges();
+            return true;
         }
 
-        public IEnumerable<Teacher> Find(int? id, string firstName, string lastName)
+        public IEnumerable<Teacher> Find(int? id, string? firstName, string? lastName)
         {
             var query = _context.Teachers.AsQueryable();
 
