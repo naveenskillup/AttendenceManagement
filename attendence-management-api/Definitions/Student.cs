@@ -10,31 +10,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AttendenceManagementData.Definitions
 {
-    [Table("Teacher", Schema = "dbo")]
-    public class Teacher
+    public class Student
     {
         [Key]
         public int Id { get; set; }
-        
+
         public string FirstName { get; set; }
 
-        [StringLength(50, MinimumLength =3)]
+        [StringLength(50, MinimumLength = 3)]
         public string LastName { get; set; }
 
         [StringLength(200)]
-        public string Address { get; set; }
+        public string? Address { get; set; }
 
         [StringLength(25)]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         [StringLength(25)]
-        public string State { get; set; }
+        public string? State { get; set; }
 
-        [Precision(9, 2)]
-        public decimal Salary { get; set; }
-        
+        [StringLength(50, MinimumLength = 3)]
+        public string? FatherName { get; set; }
+
+        [StringLength(10, MinimumLength = 10)]
+        public string? FatherMobileNumber { get; set; }
+
         [JsonIgnore]
         public byte[]? Profile { get; set; }
-
     }
 }

@@ -11,7 +11,7 @@ namespace AttendenceManagementApi.Data
         public TeacherDataProvider(AMSDBContext context)
             => _context = context;
 
-        public Teacher Get(int id)
+        public Teacher? Get(int id)
             => _context.Teachers.FirstOrDefault(t => t.Id == id);
 
         public IEnumerable<Teacher> Get()

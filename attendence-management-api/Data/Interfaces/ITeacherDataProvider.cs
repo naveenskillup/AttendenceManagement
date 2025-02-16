@@ -4,7 +4,7 @@ namespace AttendenceManagementApi.Data.Interfaces
 {
     public interface ITeacherDataProvider
     {
-        Teacher Get(int id);
+        Teacher? Get(int id);
         IEnumerable<Teacher> Get();
         void Save(Teacher teacher);
         bool TryUpdate(int id, Teacher teacher);
