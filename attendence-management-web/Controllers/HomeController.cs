@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using AttendenceManagement.Models;
+using AttendenceManagementWeb.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AttendenceManagement.Controllers
@@ -8,9 +9,12 @@ namespace AttendenceManagement.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ExternalApiClient _apiClient;
+
+        public HomeController(ILogger<HomeController> logger, ExternalApiClient apiClient)
         {
             _logger = logger;
+            _apiClient = apiClient;
         }
 
         public IActionResult Index()
