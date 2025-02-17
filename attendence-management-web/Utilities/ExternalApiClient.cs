@@ -1,14 +1,14 @@
 ﻿using System.Text;
 using Newtonsoft.Json;
 
-namespace AttendenceManagementWeb.Utilities
+namespace AttendenceManagementWeb.ExternalServices
 {
     public class ExternalApiClient
     {
         public ExternalApiClient(HttpClient httpClient, IConfiguration configuration) 
         {
             _httpClient = httpClient;
-            _apiBaseUrl = configuration[_apiBaseUrlTag] ?? throw new ArgumentNullException("Api base url not found");
+            _apiBaseUrl = configuration.GetValue<string>(_apiBaseUrlTag) ?? throw new ArgumentNullException("Api base url not found");
         }
         
         public async Task<T?> SendRequestAsync<T>(HttpMethod method, string endpoint, object? data)

@@ -1,4 +1,4 @@
-﻿using AttendenceManagementData.Definitions;
+﻿using AttendenceManagementDefinitions;
 
 namespace AttendenceManagementApi.Data.Interfaces
 {

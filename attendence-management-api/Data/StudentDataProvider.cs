@@ -1,6 +1,6 @@
 ﻿using AttendenceManagementApi.Data.Interfaces;
 using AttendenceManagementData;
-using AttendenceManagementData.Definitions;
+using AttendenceManagementDefinitions;
 using Microsoft.EntityFrameworkCore;
 
 namespace AttendenceManagementApi.Data
@@ -17,35 +17,35 @@ namespace AttendenceManagementApi.Data
         public IEnumerable<Student> Get()
             => _context.Students;
 
-        public void Save(Student teacher)
+        public void Save(Student student)
         {
-            _context.Students.Add(teacher);
+            _context.Students.Add(student);
             _context.SaveChanges();
         }
 
-        public bool TryUpdate(int id, Student teacher)
+        public bool TryUpdate(int id, Student student)
         {
             var existingStudent = _context.Students.FirstOrDefault(t => t.Id == id);
             if (existingStudent == null)
                 return false;
 
-            existingStudent.FirstName = teacher.FirstName;
-            existingStudent.LastName = teacher.LastName;
-            existingStudent.Address = teacher.Address;
-            existingStudent.City = teacher.City;
-            existingStudent.State = teacher.State;
-            existingStudent.Profile = teacher.Profile;
+            existingStudent.FirstName = student.FirstName;
+            existingStudent.LastName = student.LastName;
+            existingStudent.Address = student.Address;
+            existingStudent.City = student.City;
+            existingStudent.State = student.State;
+            existingStudent.Profile = student.Profile;
             _context.SaveChanges();
             return true;
         }
 
         public bool TryDelete(int id)
         {
-            var teacher = _context.Students.FirstOrDefault(t => t.Id == id);
-            if (teacher == null)
+            var student = _context.Students.FirstOrDefault(t => t.Id == id);
+            if (student == null)
                 return false;
 
-            _context.Students.Remove(teacher);
+            _context.Students.Remove(student);
             _context.SaveChanges();
             return true;
         }

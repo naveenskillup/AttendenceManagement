@@ -1,8 +1,5 @@
-﻿using AttendenceManagementApi.Data;
+﻿using AttendenceManagementDefinitions;
 using AttendenceManagementApi.Data.Interfaces;
-using AttendenceManagementData;
-using AttendenceManagementData.Definitions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AttendenceManagementApi.Controllers

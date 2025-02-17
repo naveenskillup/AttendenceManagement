@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using AttendenceManagement.Models;
-using AttendenceManagementWeb.Utilities;
+using AttendenceManagementWeb.ExternalServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AttendenceManagement.Controllers
@@ -9,16 +9,18 @@ namespace AttendenceManagement.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private readonly ExternalApiClient _apiClient;
+        private readonly IStudentServices _studentServices;
 
-        public HomeController(ILogger<HomeController> logger, ExternalApiClient apiClient)
+        public HomeController(ILogger<HomeController> logger, IStudentServices studentServices)
         {
             _logger = logger;
-            _apiClient = apiClient;
+            _studentServices = studentServices;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var result = await _studentServices.GetAllStudentsAsync();
+            _logger.LogInformation("Index visited");
             return View();
         }
 

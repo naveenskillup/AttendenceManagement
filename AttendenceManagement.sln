@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "attendence-management-api",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "attendence-management-web", "attendence-management-web\attendence-management-web.csproj", "{87139CAA-45BB-45B6-B43B-A0F98DAAF63F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "attendence-management-definitions", "attendence-management-definitions\attendence-management-definitions.csproj", "{BCFAEB60-E32C-4C94-A737-2A1927F35935}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{87139CAA-45BB-45B6-B43B-A0F98DAAF63F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87139CAA-45BB-45B6-B43B-A0F98DAAF63F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87139CAA-45BB-45B6-B43B-A0F98DAAF63F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCFAEB60-E32C-4C94-A737-2A1927F35935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCFAEB60-E32C-4C94-A737-2A1927F35935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCFAEB60-E32C-4C94-A737-2A1927F35935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCFAEB60-E32C-4C94-A737-2A1927F35935}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

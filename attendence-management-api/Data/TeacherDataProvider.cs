@@ -1,6 +1,6 @@
 ﻿using AttendenceManagementApi.Data.Interfaces;
 using AttendenceManagementData;
-using AttendenceManagementData.Definitions;
+using AttendenceManagementDefinitions;
 using Microsoft.EntityFrameworkCore;
 
 namespace AttendenceManagementApi.Data
