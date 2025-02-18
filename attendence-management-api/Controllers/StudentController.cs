@@ -7,7 +7,7 @@ namespace AttendenceManagementApi.Controllers
 
     [Route("api/student")]
     [ApiController]
-    public class StudentController : CommonController
+    public class StudentController : SharedController
     {
 
         public StudentController(IStudentDataProvider dataProvider)
@@ -17,9 +17,6 @@ namespace AttendenceManagementApi.Controllers
         public IActionResult Get(int id)
         {
             var student = _dataProvider.Get(id);
-            if (student == null)
-                return NotFound();
-
             return Ok(student);
         }
 
@@ -27,9 +24,6 @@ namespace AttendenceManagementApi.Controllers
         public IActionResult Get()
         {
             var students = _dataProvider.Get();
-            if (students.Count() <= 0)
-                return NotFound();
-
             return Ok(students);
         }
 
@@ -37,7 +31,6 @@ namespace AttendenceManagementApi.Controllers
         public IActionResult Save([FromBody] Student student)
         {
             _dataProvider.Save(student);
-
             return Ok(student);
         }
 
@@ -72,9 +65,6 @@ namespace AttendenceManagementApi.Controllers
                 return BadRequest();
 
             var students = _dataProvider.Find(id, firstName, lastName);
-
-            if (students.Count() <= 0)
-                return NotFound();
 
             return Ok(students);
         }

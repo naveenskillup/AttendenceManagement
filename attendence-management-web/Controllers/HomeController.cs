@@ -1,37 +1,37 @@
 using System.Diagnostics;
 using AttendenceManagement.Models;
+using AttendenceManagementDefinitions.DTOs;
+using AttendenceManagementWeb.Controllers;
 using AttendenceManagementWeb.ExternalServices;
+using AttendenceManagementWeb.Models;
+using AttendenceManagementWeb.Utilities.Adapters.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AttendenceManagement.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : SharedController
     {
-        private readonly ILogger<HomeController> _logger;
-
-        private readonly IStudentServices _studentServices;
-
-        public HomeController(ILogger<HomeController> logger, IStudentServices studentServices)
-        {
-            _logger = logger;
-            _studentServices = studentServices;
-        }
+        public HomeController(IDashboardServices dashboardServices, ILogger<HomeController> logger): base(logger)
+            => _dashboardServices = dashboardServices;
 
         public async Task<IActionResult> Index()
         {
-            var result = await _studentServices.GetAllStudentsAsync();
-            _logger.LogInformation("Index visited");
-            return View();
-        }
+            try
+            {
+                var dashboardViewData = await _dashboardServices.GetSummaryAsync();
+                dashboardViewData.AttendanceRecords = new List<AttendanceRecordDto>{
+                    new AttendanceRecordDto { Class = 7, TeacherName = "Prasanna Nayakam", ContactNumber = "7893483740", Present = 40, Total = 80},
+                    new AttendanceRecordDto { Class = 8, TeacherName = "Naveen Kumar Cheruku", ContactNumber = "8555007029", Present = 12, Total = 50},
+                    new AttendanceRecordDto { Class = 9, TeacherName = "Pavitra", ContactNumber = "9182897123", Present = 20, Total = 40}
+                };
 
-        public IActionResult GetStudents()
-        {
-            return View("Students");
-        }
-
-        public IActionResult GetTeachers()
-        {
-            return View("Teachers");
+                return View(dashboardViewData);
+            }
+            catch (Exception ex)
+            {
+                return View("Error");
+            }
+            
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -39,5 +39,7 @@ namespace AttendenceManagement.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        private readonly IDashboardServices _dashboardServices;
     }
 }

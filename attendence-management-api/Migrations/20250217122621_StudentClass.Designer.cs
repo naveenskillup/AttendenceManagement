@@ -3,6 +3,7 @@ using AttendenceManagementData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace attendence_management_api.Migrations
 {
     [DbContext(typeof(AMSDBContext))]
-    partial class AMSDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250217122621_StudentClass")]
+    partial class StudentClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,32 +23,6 @@ namespace attendence_management_api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("AttendenceManagementDefinitions.ClassInfo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Class")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Limit")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(50);
-
-                    b.Property<string>("Section")
-                        .HasColumnType("nvarchar(1)");
-
-                    b.HasKey("Id");
-
-                    b.HasAlternateKey("Class");
-
-                    b.ToTable("ClassInfo", "dbo");
-                });
 
             modelBuilder.Entity("AttendenceManagementDefinitions.Student", b =>
                 {

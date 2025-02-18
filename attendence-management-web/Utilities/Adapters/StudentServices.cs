@@ -1,4 +1,5 @@
 ﻿using AttendenceManagementDefinitions;
+using AttendenceManagementDefinitions.DTOs;
 
 namespace AttendenceManagementWeb.ExternalServices
 {
@@ -26,5 +27,6 @@ namespace AttendenceManagementWeb.ExternalServices
 
         public async Task<bool> DeleteStudentAsync(int id)
             => await _apiClient.SendRequestAsync<bool>(HttpMethod.Delete, $"student?id={id}", null);
+
     }
 }

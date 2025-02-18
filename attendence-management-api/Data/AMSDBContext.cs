@@ -10,9 +10,17 @@ namespace AttendenceManagementData
 
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<ClassInfo> ClassInfos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ClassInfo>()
+                .HasAlternateKey(x => x.Class);
+
+            modelBuilder.Entity<ClassInfo>()
+                .Property(x => x.Limit)
+                .HasDefaultValue(50);
+
             //modelBuilder.Entity<Teacher>()
             //    .HasIndex(t => t.Id)
             //    .IsClustered()

@@ -12,6 +12,8 @@ builder.Services.AddDbContext<AMSDBContext>(options =>
 // Register the data provider
 builder.Services.AddScoped<ITeacherDataProvider, TeacherDataProvider>();
 builder.Services.AddScoped<IStudentDataProvider, StudentDataProvider>();
+builder.Services.AddScoped<IDashboardDataProvider, DashboardDataProvider>();
+builder.Services.AddScoped<IClassInfoDataProvider, ClassInfoDataProvider>();
 
 // Add services to the container.
 

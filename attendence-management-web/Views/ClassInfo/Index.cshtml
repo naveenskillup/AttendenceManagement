@@ -1,0 +1,76 @@
+﻿@model IEnumerable<AttendenceManagementDefinitions.ClassInfo>
+
+@{
+	ViewData["Title"] = "Classes";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row m-2 p-0">
+	<div class="card p-0 mb-2">
+		<div class="card-header">
+			Add Class
+		</div>
+		<div class="card-body">
+			<form asp-controller="ClassInfo" asp-action="Save">
+				<div class="card card-body border-1 mb-3">
+					<div class="row mb-3">
+						<div class="col-4">
+							<label for="first-name" class="form-label">Class</label>
+							<input type="text" class="form-control" id="first-name" name="Class">
+						</div>
+						<div class="col-4">
+							<label for="class-limit" class="form-label">Limit</label>
+							<select class="form-select" id="class-limit" name="Limit">
+								<option value="50">50</option>
+								<option value="75">75</option>
+								<option value="100">100</option>
+							</select>
+						</div>
+						<div class="col-4">
+							<label for="class-section" class="form-label">Section</label>
+							<select class="form-select" id="class-section" name="Section">
+								<option value="">Select Section</option>
+								<option value="A">Section - A</option>
+								<option value="B">Section - B</option>
+								<option value="C">Section - C</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 d-flex justify-content-between">
+					<button type="button" class="col-3 btn btn-warning">Reset</button>
+					<button type="button" class="col-3 btn btn-danger">Cancel</button>
+					<button type="submit" class="col-3 btn btn-md btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-header">
+			Teacher
+		</div>
+		<div class="card-body">
+			<table class="table table-bordered table-sm table-success table-striped">
+				<thead>
+					<tr class="table-primary">
+						<th>Class</th>
+						<th>Limit</th>
+						<th>Section</th>
+						<th class="actions-col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach(var item in Model){
+						<tr>
+							<td>@item.Class</td>
+							<td>@item.Limit</td>
+							<td>@item.Section</td>
+							<td></td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

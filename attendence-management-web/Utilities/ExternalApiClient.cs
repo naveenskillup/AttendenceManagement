@@ -24,10 +24,12 @@ namespace AttendenceManagementWeb.ExternalServices
                     request.Content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
 
                 using var response = await _httpClient.SendAsync(request);
-                if (!response.IsSuccessStatusCode)
-                    throw new Exception("Api exception");
-
                 var stringResult = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                    throw new Exception($"Api exception {response.StatusCode} - {stringResult}");
+
+                
                 return JsonConvert.DeserializeObject<T>(stringResult);
             }
             catch(Exception ex)

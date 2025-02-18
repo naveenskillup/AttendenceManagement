@@ -1,4 +1,5 @@
 using AttendenceManagementWeb.ExternalServices;
+using AttendenceManagementWeb.Utilities.Adapters.Interfaces;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,8 @@ builder.Services.AddHttpClient<ExternalApiClient>()
 
 builder.Services.AddScoped<IStudentServices, StudentServices>();
 builder.Services.AddScoped<ITeacherServices, TeacherServices>();
+builder.Services.AddScoped<IDashboardServices, DashboardServices>();
+builder.Services.AddScoped<IClassInfoServices, ClassInfoServices>();
 
 var app = builder.Build();
 

@@ -1,89 +1,86 @@
-﻿
+﻿@model AttendenceManagementDefinitions.DTOs.DashboardDto
 @{
-    ViewData["Title"] = "Home Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Home Page";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="dashboard">
-    <div class="row m-2 p-0">
-        <div class="col-sm-12 col-md-4 mb-2">
-            <div class="card card-body">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h1 class="card-title">5</h1>
-                        <div class="card-subtitle">Teachers</div>
-                    </div>
-                    <div>
-                        <i class="bi bi-person-badge"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-4 mb-2">
-            <div class="card card-body">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h1 class="card-title">150</h1>
-                        <div class="card-subtitle">Students</div>
-                    </div>
-                    <div>
-                        <i class="bi bi-mortarboard"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-            <div class="card card-body">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h1 class="card-title">5</h1>
-                        <div class="card-subtitle">Workers</div>
-                    </div>
-                    <div>
-                        <i class="bi bi-person-badge"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row m-2">
-        <div class="col-12 col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    Today's Attendence
-                </div>
-                <div class="card-body">
-                    <table class="table table-success table-striped table-bordered">
-                        <thead>
-                            <tr class="table-primary">
-                                <th>Class Teacher</th>
-                                <th>Contact #</th>
-                                <th>Attendence</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>James William</td>
-                                <td>918723987123</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>James Smith</td>
-                                <td>918723987123</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Jack David</td>
-                                <td>918723987123</td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="row col-12 col-md-4">
-            
-        </div>
-    </div>
+	<div class="row m-2 p-0">
+		<div class="col-sm-12 col-md-4 mb-2">
+			<div class="card card-body">
+				<div class="d-flex justify-content-between">
+					<div>
+						<h1 class="card-title">@Model.NumberOfTeachers</h1>
+						<div class="card-subtitle">Teachers</div>
+					</div>
+					<div>
+						<i class="bi bi-person-badge"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-4 mb-2">
+			<div class="card card-body">
+				<div class="d-flex justify-content-between">
+					<div>
+						<h1 class="card-title">@Model.NumberOfStudents</h1>
+						<div class="card-subtitle">Students</div>
+					</div>
+					<div>
+						<i class="bi bi-mortarboard"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-4">
+			<div class="card card-body">
+				<div class="d-flex justify-content-between">
+					<div>
+						<h1 class="card-title">@Model.NumberOfWorkers</h1>
+						<div class="card-subtitle">Workers</div>
+					</div>
+					<div>
+						<i class="bi bi-person-badge"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row m-2">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					Today's Attendence
+				</div>
+				<div class="card-body">
+					<table class="table table-success table-striped table-bordered">
+						<thead>
+							<tr class="table-primary">
+								<th>Class</th>
+								<th>Teacher</th>
+								<th>Contact #</th>
+								<th>Present</th>
+								<th>Absent</th>
+								<th>Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var record in Model.AttendanceRecords)
+							{
+								<tr>
+									<td>@record.Class</td>
+									<td>@record.TeacherName</td>
+									<td>@record.ContactNumber</td>
+									<td>@record.Present</td>
+									<td>@record.Absent</td>
+									<td>@record.Total</td>
+								</tr>
+							}
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

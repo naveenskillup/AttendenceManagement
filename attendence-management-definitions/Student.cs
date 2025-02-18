@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AttendenceManagementDefinitions
 {
+    [Table("Student", Schema = "dbo")]
     public class Student
     {
         [Key]
@@ -28,6 +29,8 @@ namespace AttendenceManagementDefinitions
 
         [StringLength(25)]
         public string? State { get; set; }
+
+        public int Class { get; set; }
 
         [StringLength(50, MinimumLength = 3)]
         public string? FatherName { get; set; }

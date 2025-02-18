@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AttendenceManagementApi.Controllers
 {
-    public class CommonController : ControllerBase
+    public class SharedController : ControllerBase
     {
         
     }

@@ -1,4 +1,5 @@
 ﻿using AttendenceManagementDefinitions;
+using AttendenceManagementDefinitions.DTOs;
 
 namespace AttendenceManagementWeb.ExternalServices
 {
