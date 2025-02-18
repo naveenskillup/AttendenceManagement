@@ -38,6 +38,12 @@ namespace AttendenceManagementData
                 .HasOne(x => x.Subject)
                 .WithMany(x => x.TeacherClassSubjects)
                 .HasForeignKey(x => x.SubjectId);
+
+            modelBuilder.Entity<Student>()
+                .HasOne(x => x.ClassInfo)
+                .WithMany(x => x.Students)
+                .HasPrincipalKey(x => x.Class)
+                .HasForeignKey(x => x.Class);
         }
 
     }

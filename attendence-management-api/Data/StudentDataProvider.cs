@@ -24,7 +24,7 @@ namespace AttendenceManagementApi.Data
         }
 
         public bool TryUpdate(int id, Student student)
-        {
+        { 
             var existingStudent = _context.Students.FirstOrDefault(t => t.Id == id);
             if (existingStudent == null)
                 return false;

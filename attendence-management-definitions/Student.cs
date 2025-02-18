@@ -41,8 +41,6 @@ namespace AttendenceManagementDefinitions
 
         /*Student belongs to class one-to-one*/
         public int Class { get; set; }
-        
-        [ForeignKey("Class")]
         public ClassInfo? ClassInfo { get; set; }
     }
 }
