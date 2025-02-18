@@ -22,5 +22,14 @@ namespace AttendenceManagementDefinitions
         public ICollection<Student>? Students { get; set; }
 
         public ICollection<TeacherClassSubject>? TeacherClassSubjects { get; set; }
+
+        /*one to one between teacher and class*/
+        public int ClassTeacherId { get; set; }
+
+        //[ForeignKey("ClassTeacherId")]
+        //public Teacher? ClassTeacher { get; set; }
+
+        ///*one to many between attendence and class record */
+        //public ICollection<AttendanceStatus>? AttendanceStatuses { get; set; }
     }
 }

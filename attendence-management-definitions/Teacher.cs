@@ -39,5 +39,8 @@ namespace AttendenceManagementDefinitions
 
         public ICollection<TeacherClassSubject>? TeacherClassSubjects { get; set; }
 
+        ///*one to one between teacher and class, class that the teacher is responsble for*/
+        //public ClassInfo? ClassInfo { get; set; }
+
     }
 }

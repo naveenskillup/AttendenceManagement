@@ -13,6 +13,7 @@ namespace AttendenceManagementData
         public DbSet<ClassInfo> ClassInfos { get; set; }
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<TeacherClassSubject> TeacherClassSubjects { get; set; }
+        public DbSet<AttendanceStatus> AttendanceStatuses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
