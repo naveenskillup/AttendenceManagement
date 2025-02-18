@@ -3,6 +3,7 @@ using AttendenceManagementData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace attendence_management_api.Migrations
 {
     [DbContext(typeof(AMSDBContext))]
-    partial class AMSDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250218073109_ManyToManyAllowingOmitSave")]
+    partial class ManyToManyAllowingOmitSave
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,6 +69,9 @@ namespace attendence_management_api.Migrations
                     b.Property<int>("Class")
                         .HasColumnType("int");
 
+                    b.Property<int>("ClassInfoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("FatherMobileNumber")
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
@@ -92,7 +98,7 @@ namespace attendence_management_api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Class");
+                    b.HasIndex("ClassInfoId");
 
                     b.ToTable("Student", "dbo");
                 });
@@ -199,7 +205,7 @@ namespace attendence_management_api.Migrations
                 {
                     b.HasOne("AttendenceManagementDefinitions.ClassInfo", "ClassInfo")
                         .WithMany("Students")
-                        .HasForeignKey("Class")
+                        .HasForeignKey("ClassInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

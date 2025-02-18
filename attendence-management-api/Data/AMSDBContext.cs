@@ -11,6 +11,8 @@ namespace AttendenceManagementData
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<ClassInfo> ClassInfos { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<TeacherClassSubject> TeacherClassSubjects { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,10 +23,21 @@ namespace AttendenceManagementData
                 .Property(x => x.Limit)
                 .HasDefaultValue(50);
 
-            //modelBuilder.Entity<Teacher>()
-            //    .HasIndex(t => t.Id)
-            //    .IsClustered()
-            //    .HasDatabaseName("IX_Teacher_Id");
+            /*many to many relationship*/
+            modelBuilder.Entity<TeacherClassSubject>()
+                .HasOne(x => x.Teacher)
+                .WithMany(x => x.TeacherClassSubjects)
+                .HasForeignKey(x => x.TeacherId);
+
+            modelBuilder.Entity<TeacherClassSubject>()
+                .HasOne(x => x.ClassInfo)
+                .WithMany(x => x.TeacherClassSubjects)
+                .HasForeignKey(x => x.ClassInfoId);
+
+            modelBuilder.Entity<TeacherClassSubject>()
+                .HasOne(x => x.Subject)
+                .WithMany(x => x.TeacherClassSubjects)
+                .HasForeignKey(x => x.SubjectId);
         }
 
     }

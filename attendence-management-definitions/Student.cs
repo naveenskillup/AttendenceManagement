@@ -30,8 +30,6 @@ namespace AttendenceManagementDefinitions
         [StringLength(25)]
         public string? State { get; set; }
 
-        public int Class { get; set; }
-
         [StringLength(50, MinimumLength = 3)]
         public string? FatherName { get; set; }
 
@@ -40,5 +38,11 @@ namespace AttendenceManagementDefinitions
 
         [JsonIgnore]
         public byte[]? Profile { get; set; }
+
+        /*Student belongs to class one-to-one*/
+        public int Class { get; set; }
+        
+        [ForeignKey("Class")]
+        public ClassInfo? ClassInfo { get; set; }
     }
 }

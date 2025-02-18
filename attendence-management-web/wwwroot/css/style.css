@@ -59,6 +59,7 @@ label{
     border-radius: 80px;
 }
 
+
 @media (max-width:576px) {
     #sidebar{
         width: 60px;

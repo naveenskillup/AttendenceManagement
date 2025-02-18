@@ -17,5 +17,10 @@ namespace AttendenceManagementDefinitions
         public int Class { get; set; }
         public int Limit { get; set; }
         public char? Section { get; set; }
+
+        /*Class contain number of students*/
+        public ICollection<Student>? Students { get; set; }
+
+        public ICollection<TeacherClassSubject>? TeacherClassSubjects { get; set; }
     }
 }

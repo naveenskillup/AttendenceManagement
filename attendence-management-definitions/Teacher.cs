@@ -25,11 +25,19 @@ namespace AttendenceManagementDefinitions
         [StringLength(25)]
         public string State { get; set; }
 
+        [StringLength(25)]
+        public string Subject { get; set; }
+
         [Precision(9, 2)]
         public decimal Salary { get; set; }
 
+        [StringLength(10, MinimumLength = 10)]
+        public string? MobileNumber { get; set; }
+
         [JsonIgnore]
         public byte[]? Profile { get; set; }
+
+        public ICollection<TeacherClassSubject>? TeacherClassSubjects { get; set; }
 
     }
 }

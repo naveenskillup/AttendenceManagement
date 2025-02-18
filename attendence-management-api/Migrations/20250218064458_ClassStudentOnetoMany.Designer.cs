@@ -3,6 +3,7 @@ using AttendenceManagementData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace attendence_management_api.Migrations
 {
     [DbContext(typeof(AMSDBContext))]
-    partial class AMSDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250218064458_ClassStudentOnetoMany")]
+    partial class ClassStudentOnetoMany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,6 +69,9 @@ namespace attendence_management_api.Migrations
                     b.Property<int>("Class")
                         .HasColumnType("int");
 
+                    b.Property<int>("ClassInfoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("FatherMobileNumber")
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
@@ -92,26 +98,9 @@ namespace attendence_management_api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Class");
+                    b.HasIndex("ClassInfoId");
 
                     b.ToTable("Student", "dbo");
-                });
-
-            modelBuilder.Entity("AttendenceManagementDefinitions.Subject", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Subject", "dbo");
                 });
 
             modelBuilder.Entity("AttendenceManagementDefinitions.Teacher", b =>
@@ -167,87 +156,20 @@ namespace attendence_management_api.Migrations
                     b.ToTable("Teacher", "dbo");
                 });
 
-            modelBuilder.Entity("AttendenceManagementDefinitions.TeacherClassSubject", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ClassInfoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SubjectId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClassInfoId");
-
-                    b.HasIndex("SubjectId");
-
-                    b.HasIndex("TeacherId");
-
-                    b.ToTable("TeacherClassSubject", "dbo");
-                });
-
             modelBuilder.Entity("AttendenceManagementDefinitions.Student", b =>
                 {
                     b.HasOne("AttendenceManagementDefinitions.ClassInfo", "ClassInfo")
                         .WithMany("Students")
-                        .HasForeignKey("Class")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ClassInfo");
-                });
-
-            modelBuilder.Entity("AttendenceManagementDefinitions.TeacherClassSubject", b =>
-                {
-                    b.HasOne("AttendenceManagementDefinitions.ClassInfo", "ClassInfo")
-                        .WithMany("TeacherClassSubjects")
                         .HasForeignKey("ClassInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AttendenceManagementDefinitions.Subject", "Subject")
-                        .WithMany("TeacherClassSubjects")
-                        .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AttendenceManagementDefinitions.Teacher", "Teacher")
-                        .WithMany("TeacherClassSubjects")
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("ClassInfo");
-
-                    b.Navigation("Subject");
-
-                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("AttendenceManagementDefinitions.ClassInfo", b =>
                 {
                     b.Navigation("Students");
-
-                    b.Navigation("TeacherClassSubjects");
-                });
-
-            modelBuilder.Entity("AttendenceManagementDefinitions.Subject", b =>
-                {
-                    b.Navigation("TeacherClassSubjects");
-                });
-
-            modelBuilder.Entity("AttendenceManagementDefinitions.Teacher", b =>
-                {
-                    b.Navigation("TeacherClassSubjects");
                 });
 #pragma warning restore 612, 618
         }
