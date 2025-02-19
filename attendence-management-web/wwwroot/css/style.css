@@ -1,5 +1,5 @@
 
-#sidebar{
+#sidebar {
     width: 180px;
     height: 100vh;
     background-color: #043959;
@@ -21,13 +21,15 @@
 }
 
 #main-content {
-    margin-left:180px;
-    padding: 5px;
-    height: 100vh;
-    overflow-y: auto;
+    margin-left: 180px;
+    padding: 1px;
+    min-height: 100vh !important;
+    background-color: var(--bs-card-color);
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 
-.actions-col{
+.actions-col {
     width: 100px;
 }
 
@@ -63,23 +65,18 @@ label{
     overflow-y: auto;
 }
 
+
 /* Dashboard styles */
-.dashboard .card i, .dashboard .card .card-subtitle{
-   font-weight: 600;
-   font-size: 1.5rem;
-   color:blueviolet
+#dashboard .card i, #dashboard .card .card-subtitle {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: blueviolet
 }
 
-.dashboard .card .card-title, .dashboard .card i{
-    font-size: 2rem;
+#dashboard .card .card-title, #dashboard .card i{
+    font-size: 1.5rem;
     color:blueviolet;
 }
-
-.dashboard .profile{
-    width: 120px;
-    border-radius: 80px;
-}
-
 
 @media (max-width:576px) {
     #sidebar{
