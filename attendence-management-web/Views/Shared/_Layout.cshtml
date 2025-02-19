@@ -41,25 +41,15 @@
 	</div>
 	<!-- main section -->
 	<div class="card" id="main-content">
-		<div class="card-body">
+		<div class="card-body p-1">
 			@RenderBody()
 		</div>
 	</div>
 	<script src="~/js/jquery-3.7.1.min.js"></script>
 	<script src="~/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-	<script>
-		$(document).ready(function () {
-			$('.datepicker').datepicker({
-				format: 'dd-mm-yyyy',  // Set the format you want
-				autoclose: true,
-				todayHighlight: true,
-				startDate: new Date()
-			}).on('changeDate', function (e) {
-				 $(this).closest('.input-group').find('.datepicker-input').val(e.format());
-			});
-		});
-	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/inputmask.min.js"></script>
+	<script src="~/js/site.js"></script>
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -59,10 +59,11 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-12 d-flex justify-content-between">
-				<button type="button" class="col-3 btn btn-warning">Reset</button>
-				<button type="button" class="col-3 btn btn-danger">Cancel</button>
-				<button type="submit" class="col-3 btn btn-md btn-primary">Submit</button>
+			<div class="row mt-2">
+				<div class="col d-flex justify-content-center">
+					<button type="button" class="btn btn-danger  me-3">Cancel</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
 			</div>
 		</form>
 	</div>
@@ -71,25 +72,31 @@
 	<div class="card-header">
 		Teachers
 	</div>
-	<div class="card-body">
-		<table class="table table-bordered table-sm table-success table-striped">
-			<thead>
-				<tr class="table-primary">
-					<th>Name</th>
-					<th>Contact #</th>
-					<td>Salary</td>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach (var item in Model)
-				{
-					<tr>
-						<td>@item.LastName</td>
-						<td></td>
-						<td>@item.Salary</td>
+	<div class="card-body p-1">
+		<div class="table-container">
+			<table class="table table-striped border-success table-success table-hover">
+				<thead>
+					<tr class="table-primary">
+						<th>Name</th>
+						<th>Contact #</th>
+						<td>Salary</td>
+						<td>Subject</td>
+						<td>Address</td>
 					</tr>
-				}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>@item.LastName</td>
+							<td>@item.MobileNumber</td>
+							<td>@item.Salary</td>
+							<td>@item.Subject</td>
+							<td>@item.Address</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>

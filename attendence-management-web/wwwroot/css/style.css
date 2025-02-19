@@ -8,7 +8,10 @@
 }
 
 #sidebar .nav-link{
-    margin:5px;
+    margin-top:5px;
+}
+#sidebar a:hover {
+    background-color: #101112;
 }
 
 #sidebar .nav-icon{
@@ -67,15 +70,16 @@ label{
 
 
 /* Dashboard styles */
-#dashboard .card i, #dashboard .card .card-subtitle {
+#dashboard .card {
+    background-color: lightblue;
+}
+#dashboard .card i {
+    font-weight: 600;
+    font-size: 2rem;
+}
+#dashboard .card-subtitle, #dashboard .card-title {
     font-weight: 600;
     font-size: 1.5rem;
-    color: blueviolet
-}
-
-#dashboard .card .card-title, #dashboard .card i{
-    font-size: 1.5rem;
-    color:blueviolet;
 }
 
 @media (max-width:576px) {
