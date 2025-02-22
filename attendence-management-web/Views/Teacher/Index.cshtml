@@ -9,7 +9,7 @@
 		Add Teacher
 	</div>
 	<div class="card-body">
-		<form asp-controller="Teacher" asp-action="Save" method="post">
+		<form asp-controller="Teacher" asp-action="Save" method="post" id="submit-teacher-form">
 			<div class="row">
 				<div class="col-4 mb-1">
 					<label for="first-name" class="form-label">First Name</label>
@@ -18,14 +18,20 @@
 				<div class="col-4 mb-1">
 					<label for="last-name" class="form-label">Last Name</label>
 					<input type="text" class="form-control" id="last-name" name="LastName">
+					<span class="text-danger" data-valmsg-for="LastName"></span>
 				</div>
 				<div class="col-4 mb-1">
 					<label for="contact-number" class="form-label">Contact #</label>
 					<input type="text" class="form-control" id="contact-number" name="MobileNumber">
+					<span class="text-danger" data-valmsg-for="MobileNumber"></span>
 				</div>
 				<div class="col-4 mb-1">
 					<label for="salary" class="form-label">Salary</label>
-					<input type="text" class="form-control" id="salary" name="Salary">
+					<div class="input-group">
+						<input type="text" class="form-control" id="salary" name="Salary">
+						<span class="input-group-text">K</span>
+					</div>
+					<span class="text-danger" data-valmsg-for="Salary"></span>
 				</div>
 				<div class="col-4 mb-1">
 					<label for="profile" class="form-label">Profile</label>
@@ -35,6 +41,7 @@
 				<div class="col-4 mb-1">
 					<label for="subject" class="form-label">Subject</label>
 					<select class="form-select" id="subject" name="Subject">
+						<option value="" selected>Select Subject</option>
 						<option value="Telugu">Telugu</option>
 						<option value="Hindi">Hindi</option>
 						<option value="English">English</option>
@@ -42,10 +49,12 @@
 						<option value="Science">Science</option>
 						<option value="Social">Social</option>
 					</select>
+					<span class="text-danger" data-valmsg-for="Subject"></span>
 				</div>
 				<div class="col-4 mb-1">
 					<label for="address" class="form-label">Address</label>
 					<input type="text" class="form-control" id="address" name="Address">
+					<span class="text-danger" data-valmsg-for="Address"></span>
 				</div>
 				<div class="col-4 mb-1">
 					<label for="city" class="form-label">City</label>
@@ -54,7 +63,8 @@
 				<div class="col-4 mb-1">
 					<label for="address" class="form-label">State</label>
 					<select class="form-select" name="State">
-						<option selected value="ts">Telangana</option>
+						<option value="" selected>Select State</option>
+						<option value="ts">Telangana</option>
 						<option value="ap">Andhra Pradesh</option>
 					</select>
 				</div>

@@ -10,20 +10,24 @@
 		Add Class
 	</div>
 	<div class="card-body">
-		<form asp-controller="ClassInfo" asp-action="Save">
+		<form asp-controller="ClassInfo" asp-action="Save" id="submit-class-form">
 			<div class="card card-body border-1 mb-1">
 				<div class="row">
 					<div class="col-4">
 						<label for="first-name" class="form-label">Class</label>
 						<input type="text" class="form-control" id="first-name" name="Class">
+						<span class="text-danger" data-valmsg-for="Class"></span>
 					</div>
 					<div class="col-4">
 						<label for="class-limit" class="form-label">Limit</label>
 						<select class="form-select" id="class-limit" name="Limit">
+							<option value="" selected>Select Limit</option>
+							<option value="25">25</option>
 							<option value="50">50</option>
 							<option value="75">75</option>
 							<option value="100">100</option>
 						</select>
+						<span class="text-danger" data-valmsg-for="Limit"></span>
 					</div>
 					<div class="col-4">
 						<label for="class-section" class="form-label">Section</label>

@@ -10,7 +10,8 @@ namespace AttendenceManagementDefinitions
         [Key]
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        [StringLength(3, MinimumLength = 50)]
+        public required string Name { get; set; }
 
         public ICollection<TeacherClassSubject>? TeacherClassSubjects { get; set; }
     }

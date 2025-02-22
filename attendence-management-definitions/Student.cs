@@ -16,7 +16,7 @@ namespace AttendenceManagementDefinitions
         [Key]
         public int Id { get; set; }
 
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         [StringLength(50, MinimumLength = 3)]
         public string LastName { get; set; }
@@ -31,10 +31,10 @@ namespace AttendenceManagementDefinitions
         public string? State { get; set; }
 
         [StringLength(50, MinimumLength = 3)]
-        public string? FatherName { get; set; }
+        public required string FatherName { get; set; }
 
         [StringLength(10, MinimumLength = 10)]
-        public string? FatherMobileNumber { get; set; }
+        public required string FatherMobileNumber { get; set; }
 
         [JsonIgnore]
         public byte[]? Profile { get; set; }
