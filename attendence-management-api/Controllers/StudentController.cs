@@ -30,6 +30,15 @@ namespace AttendenceManagementApi.Controllers
         [HttpPost]
         public IActionResult Save([FromBody] Student student)
         {
+            if(student == null)
+                return BadRequest("Student data is required");
+
+            if (string.IsNullOrEmpty(student.RollNumber))
+            {
+                var nextSequenceNumber = _dataProvider.GetSequnceNumber(student.Class) + 1;
+                var rollNumber = $"{_studentIdPrefix}{nextSequenceNumber.ToString().PadLeft(_studentIdNumericLength, '0')}";
+                student.RollNumber = rollNumber;
+            }
             _dataProvider.Save(student);
             return Ok(student);
         }
@@ -70,6 +79,8 @@ namespace AttendenceManagementApi.Controllers
         }
 
         private readonly IStudentDataProvider _dataProvider;
+        private const short _studentIdNumericLength= 6;
+        private const char _studentIdPrefix = 'B';
     }
 
 }

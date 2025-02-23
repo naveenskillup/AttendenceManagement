@@ -16,10 +16,13 @@ namespace AttendenceManagementDefinitions
         [Key]
         public int Id { get; set; }
 
+        [StringLength(10, MinimumLength = 7)]
+        public required string RollNumber { get; set; }
+        
         public string? FirstName { get; set; }
 
         [StringLength(50, MinimumLength = 3)]
-        public string LastName { get; set; }
+        public required string LastName { get; set; }
 
         [StringLength(200)]
         public string? Address { get; set; }

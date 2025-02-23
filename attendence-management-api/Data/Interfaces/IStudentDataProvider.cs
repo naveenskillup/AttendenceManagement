@@ -10,5 +10,6 @@ namespace AttendenceManagementApi.Data.Interfaces
         bool TryUpdate(int id, Student teacher);
         bool TryDelete(int id);
         IEnumerable<Student> Find(int? id, string? firstName, string? lastName);
+        int GetSequnceNumber(int classId);
     }
 }

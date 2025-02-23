@@ -66,6 +66,9 @@ namespace AttendenceManagementApi.Data
             return query.ToList();
         }
 
+        public int GetSequnceNumber(int classId) 
+            => _context.Students.Where(x => x.ClassInfo.Id == classId).Max(x => x.Id);
+
         private readonly AMSDBContext _context;
     }
 }
