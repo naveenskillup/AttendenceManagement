@@ -10,43 +10,7 @@
 		Add Class
 	</div>
 	<div class="card-body">
-		<form asp-controller="ClassInfo" asp-action="Save" id="submit-class-form">
-			<div class="card card-body border-1 mb-1">
-				<div class="row">
-					<div class="col-4">
-						<label for="first-name" class="form-label">Class</label>
-						<input type="text" class="form-control" id="first-name" name="Class">
-						<span class="text-danger" data-valmsg-for="Class"></span>
-					</div>
-					<div class="col-4">
-						<label for="class-limit" class="form-label">Limit</label>
-						<select class="form-select" id="class-limit" name="Limit">
-							<option value="" selected>Select Limit</option>
-							<option value="25">25</option>
-							<option value="50">50</option>
-							<option value="75">75</option>
-							<option value="100">100</option>
-						</select>
-						<span class="text-danger" data-valmsg-for="Limit"></span>
-					</div>
-					<div class="col-4">
-						<label for="class-section" class="form-label">Section</label>
-						<select class="form-select" id="class-section" name="Section">
-							<option value="">Select Section</option>
-							<option value="A">Section - A</option>
-							<option value="B">Section - B</option>
-							<option value="C">Section - C</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			<div class="row mt-2">
-				<div class="col d-flex justify-content-center">
-					<button type="button" class="btn btn-danger  me-3">Cancel</button>
-					<button type="submit" class="btn btn-primary">Submit</button>
-				</div>
-			</div>
-		</form>
+		@{ await Html.RenderPartialAsync("_Class");}
 	</div>
 </div>
 <div class="card">
@@ -58,20 +22,39 @@
 			<thead>
 				<tr class="table-primary">
 					<th>Class</th>
+					<th>Teacher</th>
+					<th>Number of Students</th>
 					<th>Limit</th>
 					<th>Section</th>
-					<th class="actions-col">Action</th>
+					<th class="actions-col">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
-				@foreach (var item in Model)
-				{
+				@if(Model.Count() > 0){
+					foreach (var item in Model)
+					{
 						<tr>
 							<td>@item.Class</td>
+							<td></td>
+							<td></td>
 							<td>@item.Limit</td>
 							<td>@item.Section</td>
-							<td></td>
+							<td>
+								<div class="d-flex justify-content-center">
+									<a href="#" class="me-4">
+										<i class="bi bi-pen-fill"></i>
+									</a>
+									<a asp-controller="ClassInfo" asp-action="Delete" asp-route-id="@item.Id">
+										<i class="bi bi-trash3-fill"></i>
+									</a>
+								</div>
+							</td>
 						</tr>
+					}
+				}else{
+					<tr>
+						<td colspan="6" class="text-center">No data found</td>
+					</tr>					
 				}
 			</tbody>
 		</table>

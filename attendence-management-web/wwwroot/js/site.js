@@ -1,4 +1,7 @@
-﻿$(function() {
+﻿$(function () {
+    $('.name').inputmask({ regex: "[a-zA-Z\\s]{0,25}"});
+    $('.full-name').inputmask({ regex: "[a-zA-Z\\s]{0,50}" });
+    $('.mobile-number').inputmask({ regex: "[0-9\\s]{0,10}" });
 	$('.datepicker').datepicker({
 		format: 'dd-mm-yyyy',  // Set the format you want
 		autoclose: true,
@@ -7,7 +10,10 @@
 	}).on('changeDate', function (e) {
 		$(this).closest('.input-group').find('.datepicker-input').val(e.format());
     });
-
+    $(".datepicker-input").inputmask("99/99/9999", {
+        placeholder: "DD/MM/YYYY",
+        clearIncomplete: true
+    });
     $("#submit-student-form").validate({
         rules: {
             LastName: {

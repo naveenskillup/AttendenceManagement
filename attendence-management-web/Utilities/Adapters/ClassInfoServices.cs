@@ -20,5 +20,7 @@ namespace AttendenceManagementWeb.ExternalServices
         public async Task<ClassInfo> AddClassInfoAsync(ClassInfo student)
            => await _apiClient.SendRequestAsync<ClassInfo>(HttpMethod.Post, "classinfo", student);
 
+        public async Task<bool> DeleteClassInfoAsync(int id)
+            => await _apiClient.SendRequestAsync<bool>(HttpMethod.Delete, $"classinfo?id={id}", null);
     }
 }

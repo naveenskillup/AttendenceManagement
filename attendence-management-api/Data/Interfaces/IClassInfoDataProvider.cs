@@ -6,6 +6,7 @@ namespace AttendenceManagementApi.Data.Interfaces
     {
         ClassInfo Get(int id);
         IEnumerable<ClassInfo> Get();
-        void Save(ClassInfo classInfo);    
+        void Save(ClassInfo classInfo);
+        bool TryDelete(int id);
     }
 }

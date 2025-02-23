@@ -11,7 +11,7 @@
 	</div>
 	<div class="card-body">
 		@{
-			await Html.RenderPartialAsync("_AddStudent");
+			await Html.RenderPartialAsync("_Student");
 		}
 	</div>
 </div>
@@ -29,22 +29,34 @@
 						<th>Name</th>
 						<th>Father's Name</th>
 						<th>Father's Contact #</th>
-						<th class="actions-col">Download</th>
+						<th class="actions-col">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach (var student in Model)
-					{
+					@if(Model.Count() > 0){
+						@foreach (var student in Model)
+						{
+							<tr>
+								<td>@student.Class</td>
+								<td>@student.Id</td>
+								<td>@student.LastName</td>
+								<td>@student.FatherName</td>
+								<td>@student.FatherMobileNumber</td>
+								<td>
+									<div class="d-flex justify-content-center">
+										<a href="#" class="me-4">
+											<i class="bi bi-pen-fill"></i>
+										</a>
+										<a asp-controller="Student" asp-action="Delete" asp-route-id="@student.Id">
+											<i class="bi bi-trash3-fill"></i>
+										</a>
+									</div>
+								</td>
+							</tr>
+						}
+					}else{
 						<tr>
-							<td>@student.Class</td>
-							<td>@student.Id</td>
-							<td>@student.LastName</td>
-							<td>@student.FatherName</td>
-							<td>@student.FatherMobileNumber</td>
-							<td class="text-center">
-								<a href="#" class="me-3" data-bs-toggle="tooltip" title="View Attendence"><i class="bi bi-eye"></i></a>
-								<a href="#" data-bs-toggle="tooltip" title="Download Attendence"><i class="bi bi-download"></i></a>
-							</td>
+							<td colspan="6" class="text-center">No data found</td>
 						</tr>
 					}
 				</tbody>

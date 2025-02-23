@@ -52,24 +52,33 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (var iterator in Enumerable.Range(0, 10))
+			@if (true)
+			{
+				foreach (var iterator in Enumerable.Range(0, 10))
+				{
+					<tr>
+						<td>
+							B131195
+						</td>
+						<td>
+							Naveen Kumar Cheruku
+						</td>
+						<td>
+							Lingaiah
+						</td>
+						<td>
+							7287041507
+						</td>
+						<td class="text-center">
+							<input type="checkbox" class="form-check-input" />
+						</td>
+					</tr>
+				}
+			}
+			else
 			{
 				<tr>
-					<td>
-						B131195
-					</td>
-					<td>
-						Naveen Kumar Cheruku
-					</td>
-					<td>
-						Lingaiah
-					</td>
-					<td>
-						7287041507
-					</td>
-					<td class="text-center">
-						<input type="checkbox" class="form-check-input" />
-					</td>
+					<td colspan="5" class="text-center">No data found</td>
 				</tr>
 			}
 		</tbody>

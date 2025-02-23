@@ -22,6 +22,17 @@ namespace AttendenceManagementApi.Data
             _context.SaveChanges();
         }
 
+        public bool TryDelete(int id)
+        {
+            var classInfo = _context.ClassInfos.FirstOrDefault(t => t.Id == id);
+            if (classInfo == null)
+                return false;
+
+            _context.ClassInfos.Remove(classInfo);
+            _context.SaveChanges();
+            return true;
+        }
+
         private readonly AMSDBContext _context;
     }
 }

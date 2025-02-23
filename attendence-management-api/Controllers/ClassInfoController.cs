@@ -35,6 +35,17 @@ namespace AttendenceManagementApi.Controllers
             return Ok(classInfo);
         }
 
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            if (id <= 0)
+                return BadRequest();
+
+            if (!_dataProvider.TryDelete(id))
+                return NotFound();
+
+            return Ok(true);
+        }
         private readonly IClassInfoDataProvider _dataProvider;
     }
 }

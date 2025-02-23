@@ -23,6 +23,12 @@ namespace AttendenceManagementWeb.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Delete(int id)
+        {
+            var isDeleted = await _classInfoServices.DeleteClassInfoAsync(id);
+            return RedirectToAction("Index");
+        }
+
         private readonly IClassInfoServices _classInfoServices;
     }
 }

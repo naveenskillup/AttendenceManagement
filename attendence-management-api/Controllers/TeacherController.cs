@@ -55,7 +55,7 @@ namespace AttendenceManagementApi.Controllers
             if (!_dataProvider.TryDelete(id))
                 return NotFound();
 
-            return Ok();
+            return Ok(true);
         }
 
         [HttpGet("find")]

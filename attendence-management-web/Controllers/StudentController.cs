@@ -24,6 +24,12 @@ namespace AttendenceManagementWeb.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Delete(int id)
+        {
+            var isDeleted = await _studentServices.DeleteStudentAsync(id);
+            return RedirectToAction("Index");
+        }
+
         private readonly IStudentServices _studentServices;
     }
 }
