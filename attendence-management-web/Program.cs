@@ -1,4 +1,5 @@
 using AttendenceManagementWeb.ExternalServices;
+using AttendenceManagementWeb.Utilities.Adapters;
 using AttendenceManagementWeb.Utilities.Adapters.Interfaces;
 using Serilog;
 
@@ -22,6 +23,7 @@ builder.Services.AddScoped<IStudentServices, StudentServices>();
 builder.Services.AddScoped<ITeacherServices, TeacherServices>();
 builder.Services.AddScoped<IDashboardServices, DashboardServices>();
 builder.Services.AddScoped<IClassInfoServices, ClassInfoServices>();
+builder.Services.AddScoped<IAttendenceServices, AttendenceServices>();
 
 var app = builder.Build();
 

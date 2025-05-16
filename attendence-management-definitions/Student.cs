@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -18,7 +19,9 @@ namespace AttendenceManagementDefinitions
 
         [StringLength(10, MinimumLength = 7)]
         public required string RollNumber { get; set; }
-        
+
+        [IgnoreDataMember]
+        public string FullName { get { return string.Concat(FirstName, " ", LastName).Trim(); } }
         public string? FirstName { get; set; }
 
         [StringLength(50, MinimumLength = 3)]

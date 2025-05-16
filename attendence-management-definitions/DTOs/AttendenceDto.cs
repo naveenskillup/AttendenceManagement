@@ -13,6 +13,6 @@ namespace AttendenceManagementDefinitions.DTOs
         public string StudentName { get; set; }
         public string FatherName { get; set; }
         public string FatherContact { get; set; }
-        public string IsPresent { get; set; }
+        public bool IsPresent { get; set; } = false;
     }
 }

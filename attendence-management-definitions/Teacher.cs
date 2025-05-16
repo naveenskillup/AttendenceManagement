@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,9 @@ namespace AttendenceManagementDefinitions
     {
         [Key]
         public int Id { get; set; }
+
+        [IgnoreDataMember]
+        public string FullName { get { return string.Concat(FirstName, " ", LastName).Trim(); } }
 
         public string? FirstName { get; set; }
 

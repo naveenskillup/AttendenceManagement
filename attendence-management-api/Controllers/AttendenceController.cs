@@ -8,17 +8,17 @@ namespace AttendenceManagementApi.Controllers
     [ApiController]
     public class AttendenceController : SharedController
     {
-        public AttendenceController(IDashboardDataProvider dataProvider)
+        public AttendenceController(IAttendenceDataProvider dataProvider)
             => _dataProvider = dataProvider;
 
         [HttpGet]
-        public IActionResult Get(int classId, DateTime? date)
+        public IActionResult Get(int classId, DateTime? date, bool openWithPresent = true)
         {
-            var dashboardDto = _dataProvider.GetSummary();
+            var allStudentsInClass = _dataProvider.Get(classId, date, openWithPresent);
 
-            return Ok(dashboardDto);
+            return Ok(allStudentsInClass);
         }
 
-        private readonly IDashboardDataProvider _dataProvider;
+        private readonly IAttendenceDataProvider _dataProvider;
     }
 }

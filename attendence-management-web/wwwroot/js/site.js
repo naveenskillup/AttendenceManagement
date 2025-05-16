@@ -152,5 +152,22 @@
         }
     });
 
-  
+    $("#refresh-students-attendence").on("click", function () {
+        debugger;
+        const baseUrl = window.location.origin;
+        $.ajax({
+            url: `${baseUrl}/Attendence/StudentsAttendence`,  // ✅ Controller action URL
+            type: 'GET',
+            data: { classId: 7, date: '', openWithPresent: false }, // ✅ Query params
+            success: function (response) {
+                $("#students-attendence").html(response);
+            },
+            error: function (xhr, status, error) {
+                alert(error);
+                alert(xhr);
+                alert(status);
+            }
+        });
+    });
+
 });

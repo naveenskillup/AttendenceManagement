@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<AttendenceManagementDefinitions.DTOs.AttendenceDto>
+@{
 	ViewData["Title"] = "Attendence";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -36,56 +37,10 @@
 			</div>
 		</div>
 		<div class="col-3 d-flex align-items-start mt-4">
-			<button type="button" class="btn btn-success px-3">Refresh</button>
+			<button type="button" class="btn btn-success px-3" id="refresh-students-attendence">Refresh</button>
 		</div>
 	</div>
 </div>
-<div class="table-container">
-	<table class="table table-striped border-success table-success table-hover">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Student's Name</th>
-				<th>Father's Name</th>
-				<th>Father's Contact #</th>
-				<th class="actions-col">Present/Absent</th>
-			</tr>
-		</thead>
-		<tbody>
-			@if (true)
-			{
-				foreach (var iterator in Enumerable.Range(0, 10))
-				{
-					<tr>
-						<td>
-							B131195
-						</td>
-						<td>
-							Naveen Kumar Cheruku
-						</td>
-						<td>
-							Lingaiah
-						</td>
-						<td>
-							7287041507
-						</td>
-						<td class="text-center">
-							<input type="checkbox" class="form-check-input" />
-						</td>
-					</tr>
-				}
-			}
-			else
-			{
-				<tr>
-					<td colspan="5" class="text-center">No data found</td>
-				</tr>
-			}
-		</tbody>
-	</table>
+<div id="students-attendence">
 </div>
-<div class="row mt-4">
-	<div class="col d-flex justify-content-end">
-		<button type="submit" class="btn btn-primary px-3 me-2">Submit</button>
-	</div>
-</div>
+
